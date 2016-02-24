@@ -6,6 +6,7 @@ cache:
   apt: true
   directories:
     - $HOME/.vagrant.d
+    - $HOME/VirtualBox\ VMs
     - $HOME/downloads
 before_install:
   - sudo rm /etc/apt/sources.list.d/mongodb.list
