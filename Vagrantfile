@@ -13,14 +13,21 @@ Vagrant.configure("2") do |config|
 
   config.vm.network :private_network, ip: "33.33.33.10"
 
-  #Build the custom version of Nginx 
+  # Increase boot timeout for slow machines (aka Travis)
+  config.vm.boot_timeout = 600
+
+  # Build the custom version of Nginx
   config.vm.provision :shell, :path => "nginx-build.sh"
   config.vm.provision :shell, :path => "copy-rpms-out.sh"
 
   config.vm.provider :virtualbox do |vb|
     vb.name = "vagrant-nginx-custom-build"
-    vb.customize ["modifyvm", :id, "--cpus", "1"]
     vb.customize ["modifyvm", :id, "--memory", "2048"]
+    if ENV['TRAVIS'] == "true"
+      vb.customize ["modifyvm", :id, "--cpus", "1"]
+    else
+      vb.customize ["modifyvm", :id, "--cpus", "2"]
+    end
   end
 
 end
