@@ -22,11 +22,12 @@ Vagrant.configure("2") do |config|
 
   config.vm.provider :virtualbox do |vb|
     vb.name = "vagrant-nginx-custom-build"
-    vb.customize ["modifyvm", :id, "--memory", "2048"]
     if ENV['TRAVIS'] == "true"
       vb.customize ["modifyvm", :id, "--cpus", "1"]
+      vb.customize ["modifyvm", :id, "--memory", "4096"]
     else
       vb.customize ["modifyvm", :id, "--cpus", "2"]
+      vb.customize ["modifyvm", :id, "--memory", "2048"]
     end
   end
 
