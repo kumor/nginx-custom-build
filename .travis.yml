@@ -25,3 +25,5 @@ script:
   - vagrant up --provision
 after_script:
   - ls -R RPMS/ SRPMS/
+after_failure:
+  - VBoxHeadless -s "vagrant-nginx-custom-build"
