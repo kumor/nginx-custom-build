@@ -51,7 +51,8 @@ on your own EL 6 machine.  The script will automatically clone the latest
 patches from this GitHub repository.
 
 This Vagrant configuration in ``master`` will always build the **latest
-stable** version of Nginx.
+stable** version of Nginx. See the relevant branch for other builds, which
+occasionally include the relevant mainline version.
 
 Credits
 =======
