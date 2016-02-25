@@ -22,7 +22,7 @@ before_script:
   - sudo apt-get -y install virtualbox-5.0
   - vagrant plugin install vagrant-vbguest
 script:
-  - vagrant up --provision
+  - VAGRANT_LOG=info vagrant up --provision
 after_script:
   - ls -R RPMS/ SRPMS/
 after_failure:
